@@ -91,6 +91,8 @@ create TABLE movement(
 alter table movement add constraint `fk_reverseMovement` foreign key
     (reverseMovement) references movement(movementId);
 
+CREATE SEQUENCE movement_SEQ START WITH 1 INCREMENT BY 1;
+
 alter table customer add column lastUpdateEmployee int unsigned;
 alter table customer add column lastUpdateDate datetime;
 alter table account add column lastUpdateEmployee int unsigned;

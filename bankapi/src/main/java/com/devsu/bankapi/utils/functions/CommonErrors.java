@@ -112,8 +112,8 @@ public class CommonErrors {
     public static CommonError overLimit(BigDecimal dailyLimit, BigDecimal overdraft){
         return new CommonError(
                 112,
-                "Sobrepasa la cantidad posible a debitar en el dia ($" + dailyLimit
-                        + ") con este movimiento llegaria a $" + overdraft + ", intentelo el dia de mañana",
+                "Cupo diario excedido ($" + dailyLimit + ") con este movimiento llegaria a $"
+                        + overdraft + ", intentelo el dia de mañana",
                 LocalDateTime.now()
         );
     }
