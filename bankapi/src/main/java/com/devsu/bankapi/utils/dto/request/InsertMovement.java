@@ -1,5 +1,6 @@
 package com.devsu.bankapi.utils.dto.request;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +29,7 @@ public class InsertMovement {
      *  false - debito
      */
     @NotNull(message = "Se requiere conocer el tipo de movimiento")
+    @Schema(description = "true - Credito, false = Debito")
     private Boolean movementType;
 
     @Size(max = 255, message = "La descripción no puede tener mas de 255 caracteres")
@@ -35,6 +37,7 @@ public class InsertMovement {
 
     @Digits(integer = 13, fraction = 2, message = "El valor debe cumplir con el formato (13, 2)")
     @Positive(message = "El valor debe ser positivo")
+    @NotNull(message = "Se requiere conocer la cantidad del movimiento")
     private BigDecimal amount;
 
 }

@@ -1,6 +1,7 @@
 package com.devsu.bankapi.utils.dto.request;
 
 import com.devsu.bankapi.utils.abstracts.AdministrativeAbstractRequest;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +23,7 @@ public class UpdateAccountRequest extends AdministrativeAbstractRequest {
 
     @Pattern(regexp = "^(E|R|A)", message = "Los unicos estados que le puedes asignar a la cuenta son (E. Embargada), " +
             "(R. Revision) o reactivarla en caso no lo este")
+    @Schema(description = "E - Embargada, R = En revisión")
     private String status;
 
 }

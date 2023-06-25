@@ -1,6 +1,7 @@
 package com.devsu.bankapi.utils.dto.general;
 
 import com.devsu.bankapi.utils.abstracts.AdministrativeAbstractRequest;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -18,6 +19,7 @@ public class PersonRequest extends AdministrativeAbstractRequest {
 
     @NotBlank(message = "Es requerido conocer el tipo de documento de identificacion")
     @Pattern(regexp = "^(D|P)", message = "El tipo ingresado no es correcto")
+    @Schema(description = "D - Documento Personal de Identificaación, P - Pasaporte")
     private String documentType;
 
     @NotBlank(message = "Es obligatorio ingresar el documento de identificación")

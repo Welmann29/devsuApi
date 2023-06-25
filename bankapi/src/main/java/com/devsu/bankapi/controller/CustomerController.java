@@ -6,6 +6,8 @@ import com.devsu.bankapi.utils.abstracts.AbstractResponse;
 import com.devsu.bankapi.utils.dto.general.PageableResponse;
 import com.devsu.bankapi.utils.dto.request.CreateCustomerRequest;
 import com.devsu.bankapi.utils.dto.response.CustomerResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -28,6 +30,8 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    @Operation(summary = "Creación de nuevos clientes", description = "Es requerido que agregue el funcionario que " +
+            "realizara la acción")
     @PostMapping
     public ResponseEntity<CustomerResponse> createCustomer(
             @RequestBody @Valid CreateCustomerRequest request
@@ -41,9 +45,14 @@ public class CustomerController {
         }
     }
 
+    @Operation(summary = "Obtención del cuente por medio de su identificación", description =
+                "Se puede obtener el cliente tanto por su documento de identificación, como por el codigo interno del "
+                        + "banco, para realizar busqueda por el codigo del banco enviar \"Z\" en type")
     @GetMapping
     public  ResponseEntity<CustomerResponse> getCustomerById(
-            @RequestParam String type,
+            @Parameter(description = "Tipo de documento de identificacion (Z en caso se desee buscar por codigo de " +
+                    "cliente", example = "D") @RequestParam String type,
+            @Parameter(description = "Número de documento de identificación", example = "2070654460116")
             @RequestParam String code
     ){
         CustomerResponse res = customerService.getByCode(type, code);
@@ -54,6 +63,8 @@ public class CustomerController {
         }
     }
 
+    @Operation(summary = "Actualización de clientes registrados", description = "Se requiere conocer el numero de " +
+            "funcionario que realizara la acción")
     @PutMapping
     public ResponseEntity<CustomerResponse> updateCustomer(
             @RequestBody @Valid CreateCustomerRequest request
@@ -66,9 +77,12 @@ public class CustomerController {
         }
     }
 
+    @Operation(summary = "Desactivación de un cliente registrado", description = "Para poder realizar la " +
+            "desactivación de un cliente, es necesario que el balance de todas sus cuentas sea 0.00")
     @DeleteMapping
     public ResponseEntity<AbstractResponse> deleteCustomer(
-            @RequestParam String type,
+            @Parameter(description = "Tipo de documento de identificacion ", example = "D") @RequestParam String type,
+            @Parameter(description = "Número de documento de identificación", example = "2070654460116")
             @RequestParam String code
     ){
         AbstractResponse res = customerService.deleteCustomer(
@@ -81,9 +95,11 @@ public class CustomerController {
         }
     }
 
+    @Operation(summary = "Reactivación de un cliente registrado")
     @PatchMapping("/reactivateCustomer")
     public  ResponseEntity<CustomerResponse> reactivate(
-            @RequestParam String type,
+            @Parameter(description = "Tipo de documento de identificacion ", example = "D") @RequestParam String type,
+            @Parameter(description = "Número de documento de identificación", example = "2070654460116")
             @RequestParam String code
     ){
         CustomerResponse res = customerService.reactivateCustomer(type, code);
@@ -94,9 +110,13 @@ public class CustomerController {
         }
     }
 
+    @Operation(summary = "Obtención por paginado o total de los clientes registrados",
+            description = "Si se desean obtener todos los clientes existentes enviar 0 en ambos campos")
     @GetMapping("/findAllPageable")
     public  ResponseEntity<PageableResponse> getAllCustomers(
+            @Parameter(description = "Numero de pagina deseada (Enviar 0 en ambos campos para obtener todos)")
             @RequestParam Integer page,
+            @Parameter(description = "Cantidad de elementos deseados (Enviar 0 en ambos campos para obtener todos)")
             @RequestParam Integer size
     ){
         PageableResponse res = customerService.getAllPageable(page, size);
