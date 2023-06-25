@@ -1,0 +1,27 @@
+version: "3.3"
+services:
+  mysql-server:
+    container_name: mysql-server
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=devsu
+    networks:
+      - devsu-network
+    volumes:
+      - ./script.sql:/docker-entrypoint-initdb.d/script.sql
+  devsu-api:
+    container_name: devsu-api
+    image: welmann2903/devsu-api:1.0.0
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - ENV_DEVSU=docker
+    networks:
+      - devsu-network
+networks:
+  devsu-network:
+    driver: bridge
