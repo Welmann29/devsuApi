@@ -118,6 +118,22 @@ public class CommonErrors {
         );
     }
 
+    public static CommonError rangeDateError(){
+        return new CommonError(
+                113,
+                "Se ingresaron mas de 2 fechas en el rango",
+                LocalDateTime.now()
+        );
+    }
+
+    public static CommonError startDateAfterEndError(){
+        return new CommonError(
+                115,
+                "La fecha ingresada como inicial es mayor a la final",
+                LocalDateTime.now()
+        );
+    }
+
     public static AbstractResponse validationException(MethodArgumentNotValidException ex) {
         ErrorList errors = new ErrorList();
         ex.getBindingResult().getAllErrors().forEach((error) -> {

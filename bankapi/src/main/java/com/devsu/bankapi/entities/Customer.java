@@ -43,6 +43,7 @@ public class Customer extends Person {
     @PrePersist
     private void setCreationDate(){
         if (creationDate == null){
+            setCustomerCode(null);
             setCreationDate(LocalDateTime.now());
             setLastUpdateDate(this.creationDate);
             setLastUpdateEmployee(this.functionary);
