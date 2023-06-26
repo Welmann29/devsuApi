@@ -11,3 +11,11 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
         physical_naming_strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+custom:
+  mongo:
+    host: localhost
+    port: 27017
+    database: admin
+    user: myUser
+    password: userPassForTest1234
+    time-out: 5000

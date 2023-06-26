@@ -2,6 +2,7 @@ package com.devsu.bankapi.controller;
 
 import com.devsu.bankapi.service.ReportService;
 import com.devsu.bankapi.utils.dto.response.report.CustomerReport;
+import com.devsu.bankapi.utils.functions.decorators.LogDevsu;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +25,7 @@ public class ReportController {
         this.reportService = reportService;
     }
 
+    @LogDevsu
     @GetMapping
     @Operation(summary = "Reporte por cliente y rango de fecha, se mostrara la información basica del cliente" +
             " junto a todas sus cuentas (sin importar el estado) y los movimientos asociados en la fecha ingresadas")

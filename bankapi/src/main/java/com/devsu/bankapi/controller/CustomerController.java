@@ -6,6 +6,7 @@ import com.devsu.bankapi.utils.abstracts.AbstractResponse;
 import com.devsu.bankapi.utils.dto.general.PageableResponse;
 import com.devsu.bankapi.utils.dto.request.CreateCustomerRequest;
 import com.devsu.bankapi.utils.dto.response.CustomerResponse;
+import com.devsu.bankapi.utils.functions.decorators.LogDevsu;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
@@ -30,6 +31,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    @LogDevsu
     @Operation(summary = "Creación de nuevos clientes", description = "Es requerido que agregue el funcionario que " +
             "realizara la acción")
     @PostMapping
@@ -45,6 +47,7 @@ public class CustomerController {
         }
     }
 
+    @LogDevsu
     @Operation(summary = "Obtención del cuente por medio de su identificación", description =
                 "Se puede obtener el cliente tanto por su documento de identificación, como por el codigo interno del "
                         + "banco, para realizar busqueda por el codigo del banco enviar \"Z\" en type")
@@ -63,6 +66,7 @@ public class CustomerController {
         }
     }
 
+    @LogDevsu
     @Operation(summary = "Actualización de clientes registrados", description = "Se requiere conocer el numero de " +
             "funcionario que realizara la acción")
     @PutMapping
@@ -77,6 +81,7 @@ public class CustomerController {
         }
     }
 
+    @LogDevsu
     @Operation(summary = "Desactivación de un cliente registrado", description = "Para poder realizar la " +
             "desactivación de un cliente, es necesario que el balance de todas sus cuentas sea 0.00")
     @DeleteMapping
@@ -95,6 +100,7 @@ public class CustomerController {
         }
     }
 
+    @LogDevsu
     @Operation(summary = "Reactivación de un cliente registrado")
     @PatchMapping("/reactivateCustomer")
     public  ResponseEntity<CustomerResponse> reactivate(
@@ -110,6 +116,7 @@ public class CustomerController {
         }
     }
 
+    @LogDevsu
     @Operation(summary = "Obtención por paginado o total de los clientes registrados",
             description = "Si se desean obtener todos los clientes existentes enviar 0 en ambos campos")
     @GetMapping("/findAllPageable")

@@ -6,6 +6,7 @@ import com.devsu.bankapi.utils.dto.request.CreateCustomerRequest;
 import com.devsu.bankapi.utils.dto.request.InsertMovement;
 import com.devsu.bankapi.utils.dto.response.CustomerResponse;
 import com.devsu.bankapi.utils.dto.response.MovementResponse;
+import com.devsu.bankapi.utils.functions.decorators.LogDevsu;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
@@ -30,6 +31,7 @@ public class MovementController {
         this.movementService = movementService;
     }
 
+    @LogDevsu
     @Operation(summary = "Inserción de un movimiento", description = "La cuenta no puede tener un estado diferente a " +
             "A (activa) para poder registrar el movimiento")
     @PostMapping
@@ -44,6 +46,7 @@ public class MovementController {
         }
     }
 
+    @LogDevsu
     @Operation(summary = "Reversado de un movimiento", description = "Por medio de este metodo se hara el reversado de " +
             "un movimiento, en caso el movimiento sea un credito la cantidad se debitara y si es un debito se " +
             "acreditara de manera automaticca")

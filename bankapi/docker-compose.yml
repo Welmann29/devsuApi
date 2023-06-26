@@ -12,9 +12,22 @@ services:
       - devsu-network
     volumes:
       - ./script.sql:/docker-entrypoint-initdb.d/script.sql
+  mongodb_server:
+    container_name: mongodb-server
+    image: mongo
+    command: [ --auth ]
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=myUser
+      - MONGO_INITDB_ROOT_PASSWORD=userPassForTest1234
+    volumes:
+      - './mongodb/mongod.conf:/etc/mongod.conf'
+    ports:
+      - '27017:27017'
+    networks:
+      - devsu-network
   devsu-api:
     container_name: devsu-api
-    image: welmann2903/devsu-api:1.0.0
+    image: welmann2903/devsu-api:1.1.0
     restart: unless-stopped
     ports:
       - "8080:8080"
