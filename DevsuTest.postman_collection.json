@@ -1,0 +1,508 @@
+{
+	"info": {
+		"_postman_id": "f3bec8f4-0484-4a0f-8fc7-841188d53e49",
+		"name": "DevsuTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12508376"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Create customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"functionary\": 2,\r\n    \"documentType\": \"D\",\r\n    \"document\": \"2070654460116\",\r\n    \"firstName\": \"Juan\",\r\n    \"middleName\": \"Saul\",\r\n    \"firstSurname\": \"Paniagua\",\r\n    \"secondSurname\": null,\r\n    \"gender\": \"M\",\r\n    \"direction\": \"Boca del monte\",\r\n    \"internationalCallingCode\": null,\r\n    \"phoneNumber\": \"35678900\",\r\n    \"passwordCustomer\": \"adfasdfsdaafed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/customer",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/customer?type=Z&code=2",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "Z"
+								},
+								{
+									"key": "code",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All pageabler",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/customer/findAllPageable?page=0&size=3",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								"findAllPageable"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"functionary\": 2,\r\n    \"documentType\": \"D\",\r\n    \"document\": \"2070654460207\",\r\n    \"firstName\": \"Juan\",\r\n    \"middleName\": \"Saul\",\r\n    \"firstSurname\": \"Paniagua\",\r\n    \"secondSurname\": \"Contreras\",\r\n    \"gender\": \"M\",\r\n    \"direction\": \"Boca del monte\",\r\n    \"internationalCallingCode\": null,\r\n    \"phoneNumber\": \"35678900\",\r\n    \"passwordCustomer\": \"adfasdfsdaafed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/customer",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reactive customer",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/customer/reactivateCustomer?type=D&code=2070654460125",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								"reactivateCustomer"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "D"
+								},
+								{
+									"key": "code",
+									"value": "2070654460125"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/customer?type=D&code=2070654460205",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "D"
+								},
+								{
+									"key": "code",
+									"value": "2070654460205"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Create Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"functionary\": 2,\r\n    \"accountType\": 1,\r\n    \"openingBalance\": 400,\r\n    \"dailyLimit\": null,\r\n    \"customerCode\": 2,\r\n    \"currency\": \"DOL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/account",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPaging",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/account?page=0&size=3",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByCustomerCode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/account/byCustomerCode?customerCode=2",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account",
+								"byCustomerCode"
+							],
+							"query": [
+								{
+									"key": "customerCode",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by identifier",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/account/byAccountIdentifier?identifier=002-0000002-1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account",
+								"byAccountIdentifier"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "002-0000002-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update account",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"functionary\": 1,\r\n    \"accountIdentifier\": \"002-0000002-1\",\r\n    \"dayLimit\": 350\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/account",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete account",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/account?accountIdentifier=002-0000002-1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account"
+							],
+							"query": [
+								{
+									"key": "accountIdentifier",
+									"value": "002-0000002-1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movement",
+			"item": [
+				{
+					"name": "Insert movement",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountIdentifier\": \"002-0000002-1\",\r\n    \"movementType\": false,\r\n    \"movementDescription\": null,\r\n    \"amount\": 300,\r\n    \"applicationDate\": \"2023-04-16T00:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/movement",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"movement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reversed movement",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/movement?movementId=20",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"movement"
+							],
+							"query": [
+								{
+									"key": "movementId",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://34.125.86.173:8080/api/report?customerId=2&dateRange=02-02-2023_29-04-2023",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"86",
+								"173"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"report"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "2"
+								},
+								{
+									"key": "dateRange",
+									"value": "02-02-2023_29-04-2023"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

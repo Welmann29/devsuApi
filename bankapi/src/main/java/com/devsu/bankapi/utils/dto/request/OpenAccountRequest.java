@@ -1,6 +1,7 @@
 package com.devsu.bankapi.utils.dto.request;
 
 import com.devsu.bankapi.utils.abstracts.AdministrativeAbstractRequest;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,6 +19,7 @@ public class OpenAccountRequest extends AdministrativeAbstractRequest {
     @NotNull(message = "Es requerido conocer el tipo de cuenta")
     @Min(value = 1, message = "Solo se aceptan los valores (1 - Cuenta de ahorro) y (2 - Cuenta monetaria)")
     @Max(value = 2, message = "Solo se aceptan los valores (1 - Cuenta de ahorro) y (2 - Cuenta monetaria)")
+    @Schema(description = "1 - Cuenta de ahorro, 2 = Cuenta monetaria")
     private Integer accountType;
 
     @NotNull(message = "Es requerido conocer el saldo de apertura")

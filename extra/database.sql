@@ -1,3 +1,5 @@
+create database devsu;
+
 use devsu;
 
 CREATE TABLE person (
@@ -91,8 +93,13 @@ create TABLE movement(
 alter table movement add constraint `fk_reverseMovement` foreign key
     (reverseMovement) references movement(movementId);
 
-alter table customer add column lastUpdateEmployee int unsigned;
-alter table customer add column lastUpdateDate datetime;
-alter table account add column lastUpdateEmployee int unsigned;
-alter table account add column lastUpdateDate datetime;
-alter table movement add column movementStatus varchar(1);
+insert into agency(agencyName, direction) values ('Agencia Central', '1ra Avenida, Ciudad de Guatemala'), 
+('Agencia Sur', '5ta Avenida, Ciudad de Guatemala');
+
+insert into person(documentType, document, firstName, firstSurname, gender, direction) values 
+        ('D', '23456789', 'Pablo', 'Rodriguez', 'M', 'Ciudad de Guatemala'),
+        ('D', '23456788', 'Marta', 'Rodriguez', 'F', 'Ciudad de Guatemala');
+
+insert into employee(documentType, document, currentAgency, employeeStatus) values
+        ('D', '23456789', 1, 1),
+        ('D', '23456788', 2, 1);

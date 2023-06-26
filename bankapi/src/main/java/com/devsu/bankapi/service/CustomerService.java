@@ -10,6 +10,7 @@ import com.devsu.bankapi.utils.dto.general.PageableResponse;
 import com.devsu.bankapi.utils.dto.request.CreateCustomerRequest;
 import com.devsu.bankapi.utils.dto.response.CustomerResponse;
 import com.devsu.bankapi.utils.generics.ErrorList;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -144,6 +145,7 @@ public class CustomerService {
         return new CustomerResponse(errors);
     }
 
+    @Transactional
     public AbstractResponse deleteCustomer(String type, String code){
         ErrorList errors = new ErrorList();
         PersonKey key = new PersonKey(type, code);
@@ -153,7 +155,7 @@ public class CustomerService {
             if (customer.getCustomerStatus().equalsIgnoreCase("A")){
                 BigDecimal balance = accountRepository.sumBalanceByCustomerCode(customer.getCustomerCode());
 
-                if (balance == null || balance.equals(new BigDecimal(0))){
+                if (balance == null || balance.compareTo(new BigDecimal(0)) == 0){
                     if (balance != null) accountRepository.updateAccountByCustomerCode(customer.getCustomerCode());
                     customer.setCustomerStatus("I");
                     customerRepository.save(customer);

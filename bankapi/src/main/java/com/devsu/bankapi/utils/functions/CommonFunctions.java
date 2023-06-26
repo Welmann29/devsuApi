@@ -1,10 +1,14 @@
 package com.devsu.bankapi.utils.functions;
 
-import com.devsu.bankapi.entities.Account;
 import com.devsu.bankapi.entities.Customer;
 import com.devsu.bankapi.entities.keys.AccountKey;
+import com.devsu.bankapi.utils.generics.CommonError;
+import com.devsu.bankapi.utils.generics.ErrorList;
 
 import java.lang.reflect.Field;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class CommonFunctions {
 
@@ -44,6 +48,20 @@ public class CommonFunctions {
                 Integer.valueOf(accountPart[1]),
                 Integer.valueOf(accountPart[2])
         );
+    }
+
+    public static LocalDateTime stringToLocalDateTime(String date, ErrorList errors){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        try {
+            return LocalDate.parse(date, formatter).atStartOfDay();
+        }catch (Exception e){
+            errors.add(new CommonError(
+                114,
+                    "El formato de la fecha es erroneo",
+                    LocalDateTime.now()
+            ));
+        }
+        return LocalDateTime.now();
     }
 
 }

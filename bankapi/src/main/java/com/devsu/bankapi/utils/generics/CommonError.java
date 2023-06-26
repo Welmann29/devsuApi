@@ -24,6 +24,9 @@ public class CommonError {
      *  110 - Estado de cuenta no permite movimientos
      *  111 - Fondos insuficientes para realizar el debito
      *  112 - Se supero el limite diario de retiro
+     *  113 - Mas de 2 fechas en el rango
+     *  114 - formato de fecha erronea
+     *  115 - La fecha inicial es mayor a la final
      *  400 - Error en el consumo de la base de datos
      */
     private int errorCode;

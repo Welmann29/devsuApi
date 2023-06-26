@@ -112,8 +112,24 @@ public class CommonErrors {
     public static CommonError overLimit(BigDecimal dailyLimit, BigDecimal overdraft){
         return new CommonError(
                 112,
-                "Sobrepasa la cantidad posible a debitar en el dia ($" + dailyLimit
-                        + ") con este movimiento llegaria a $" + overdraft + ", intentelo el dia de mañana",
+                "Cupo diario excedido ($" + dailyLimit + ") con este movimiento llegaria a $"
+                        + overdraft + ", intentelo el dia de mañana",
+                LocalDateTime.now()
+        );
+    }
+
+    public static CommonError rangeDateError(){
+        return new CommonError(
+                113,
+                "Se ingresaron mas de 2 fechas en el rango",
+                LocalDateTime.now()
+        );
+    }
+
+    public static CommonError startDateAfterEndError(){
+        return new CommonError(
+                115,
+                "La fecha ingresada como inicial es mayor a la final",
                 LocalDateTime.now()
         );
     }
