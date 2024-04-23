@@ -1,6 +1,4 @@
-# Devsu Test Api
-
-Prueba tecnica para la empresa DEVSU
+# Test Api
 
 ## Montar el proyecto local en docker 
 Para montar el proyecto de manera local solo se debe correr el docker-compose, este levantara la aplcicacion y las bases de datos requeridas, asi mismo creara el 
